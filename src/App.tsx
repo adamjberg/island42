@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Canvas, useFrame } from "react-three-fiber";
-import { Color, Mesh, Vector3 } from "three";
+import { Color, Mesh, MeshStandardMaterial, BoxGeometry, Vector3 } from "three";
 
 type Props = {
   position: Vector3;
@@ -28,9 +28,9 @@ function Box(props: Props) {
       onClick={(e) => setActive(!active)}
       onPointerOver={(e) => setHover(true)}
       onPointerOut={(e) => setHover(false)}
+      geometry={new BoxGeometry(1, 1, 1)}
+      material={new MeshStandardMaterial({ color: hovered ? "hotpink" : "orange"})}
     >
-      <boxBufferGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
     </mesh>
   );
 }
