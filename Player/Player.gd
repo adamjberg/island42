@@ -12,7 +12,7 @@ var gravity = 20
 
 var movement_speed = 0
 var walk_speed = 1.5
-var run_speed = 500
+var run_speed = 5
 var acceleration = 6
 var angular_acceleration = 7
 
