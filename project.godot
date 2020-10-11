@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Island 42"
-run/main_scene="res://Island.tscn"
+run/main_scene="res://Island42.tscn"
 config/icon="res://icon.png"
 
 [input]
