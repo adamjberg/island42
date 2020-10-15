@@ -1,19 +1,20 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://island.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Water.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Audio/Distant horizon - Loop.wav" type="AudioStream" id=4]
 [ext_resource path="res://Island42.gd" type="Script" id=5]
 
-[sub_resource type="BoxShape" id=2]
+[sub_resource type="BoxShape" id=1]
 
-[sub_resource type="ProceduralSky" id=3]
+[sub_resource type="ProceduralSky" id=2]
 ground_bottom_color = Color( 0.466667, 0.678431, 0.890196, 1 )
 ground_horizon_color = Color( 0.92549, 0.933333, 0.996078, 1 )
 
-[sub_resource type="Environment" id=4]
+[sub_resource type="Environment" id=3]
 background_mode = 2
-background_sky = SubResource( 3 )
+background_sky = SubResource( 2 )
 ambient_light_color = Color( 1, 1, 1, 1 )
 ambient_light_energy = 0.5
 
@@ -28,14 +29,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.484, 3.88314, 0 )
 
 [node name="Water" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-script = null
 
 [node name="Area2" type="Area" parent="Water"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Water/Area2"]
 transform = Transform( 200, 0, 0, 0, 1, 0, 0, 0, 200, 0, -1, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 4 )
+environment = SubResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
 [connection signal="body_entered" from="Water/Area2" to="." method="_on_water_body_entered"]
